@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <meta encoding="utf-8">
+        <meta content="author" value="Gowtham">
+        <meta content="description" value="This is trial for calculating resisatnace of the ship">
+        <meta content="keywords" value="Resistance and powering, Displacement ships, Holtrop, Holtrop Menon">
+        <title>
+            Resistance of the Ship Using Holtop Approach
+        </title>
+        <script src="/Holtrop Calc/script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    </head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <body>
+        <div class="Definition">
+            <div>
+                <button id= "btn">Click Here</button>
+            </div>
+            <h2>Holtrop Menon Calculation</h2>
+            <p>
+                Holtrop and Mennen's method is arguably the most popular method to estimate 
+                resistance and powering of <b>displacement type ships</b>. 
+                It is based on the regression analysis of a vast range of model tests and trial data 
+                which give it a wide applicability. The Holtrop method computes a dimensional total 
+                resistance which is broken down into several components: <b>frictional resistance, appendage 
+                resistance, wave resistance, resistance due to bulbous bow near the water surface, 
+                pressure resistance due to immersed transom, model-ship correlation resistance and air resistance.</b><br>
+                <div class="Note">
+                <b>Note:</b> For extreme shapes, the accuracy of the estimates is not good. 
+                This method may be used to assess qualitatively the resistance of a ship design.
+                </div> 
+            </p>
+        </div>
+        <div class="inputdata">
+            <ul>
+                <h3>Input Data</h3>
+                <dl>
+                    <div class="principalparticulars">
+                        <dt><h4>Principal Particulars</h4></dt>
+                        <dd><a href="https://www.marineinsight.com/naval-architecture
+                            /hull-ship-understanding-design-characteristics/" target="_blank">LWL</a> in m<input id="Length" type="number" value="0" min="0"></dd><br>
+                            <dd><a href="https://www.marineinsight.com/naval-architecture
+                            /hull-ship-understanding-design-characteristics/" target="_blank">Breadth</a> in m<input id="Breadth" type="number" value="0" min="0"></dd><br>
+                            <dd><a href="https://www.marineinsight.com/naval-architecture
+                            /hull-ship-understanding-design-characteristics/" target="_blank">Draft forward</a> in m<input id="Tforward" type="number" value="0" min="0"></dd><br>
+                            <dd><a href="https://www.marineinsight.com/naval-architecture
+                            /hull-ship-understanding-design-characteristics/" target="_blank">Draft aft</a> in m<input id="Taft" type="number" value="0" min="0"></dd><br>
+                            <dd><a href="https://www.marineinsight.com/guidelines/speed-of-a-ship-at-sea/" target="_blank">Speed</a> in knots<input id="Speed" type="number" value="0" min="0" step="0.1"></dd><br>
+                            <dd><a href="https://www.marineinsight.com/naval-architecture
+                            /hull-ship-understanding-design-characteristics/" target="_blank">LCB</a> in m<input id="LCB" type="number" value="0" >
+                        </dd>
+                    </div>
+                    <div class="coefficients">
+                        <dt><h4>Form coefficients</h4></dt>
+                        <dt><h4>Coeffcients</h4></dt>
+                        <dd><a href="https://www.marineinsight.com/naval-architecture
+                        /hull-ship-understanding-design-characteristics/" target="_blank">CB</a> 
+                            <input id="CB" type="number" min="0" max="1.0" value="0" step="0.01"></dd><br>
+                        <dd><a href="https://www.marineinsight.com/naval-architecture
+                        /hull-ship-understanding-design-characteristics/" target="_blank">CM</a> 
+                            <input id="CM" type="number" min="0" max="1.0" value="0" step="0.01"></dd><br>
+                        <dd><a href="https://www.marineinsight.com/naval-architecture
+                        /hull-ship-understanding-design-characteristics/" target="_blank">CWP</a> 
+                            <input id="CWP" type="number" min="0" max="1.0" value="0" step="0.01"></dd><br>
+                        <dd><a href="https://www.marineinsight.com/naval-architecture
+                        /why-do-ships-have-bulbous-bow/" target="_blank">Bulbous Bow</a><select id="Bow">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            </select></dd><br>
+                        <dd><label for="aftBodyForm">Afterbody Form: </label>
+                        <select id="aftBodyForm">
+                        <option value="V-shaped">V-Shaped Section</option>
+                        <option value="Normal">Normal Shaped Section</option>
+                        <option value="U-shaped">U-Shaped Section</option>
+                        </select></dd><br>
+                        <dd><a href="https://www.marineinsight.com/naval-architecture/
+                        different-types-ships-sterns/" target="_blank">Transom</a><select id="Transom">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        </select></dd>
+                    </div>
+                    <div class="appandages">
+                        <dt><h4>Appandages<input type="checkbox" id="Allappanadages" checked></h4></dt>
+                        <dd>Rudder behind Skeg<input id="1+k2Rudderskeg" value="1.5" type="number" step="0.1" min="1.5" max="2.0"> Area<input id="rudderBehindSkeg" type="number" value="0" step="0.01"></dd><br>
+                        <dd>Rudder behind Stern<input id="1+k2Rudderstern" value="1.3" type="number" step="0.1" min="1.3" max="1.5"> Area<input id="rudderBehindStern" type="number" value="0" step="0.01"></dd><br>
+                        <dd>Twin screw balance rudder Area<input id="twinScrew" type="number" value="0" step="0.01"></dd><br>
+                        <dd>Shaft Brackets Area<input id="shaftBrackets" type="number" value="0"></dd><br>
+                        <dd>Skeg <input id="1+k2Skeg" type="number" value="1.5" step="0.1" min="1.5" max="2.0">Area<input id="Skeg" type="number" value="0"></dd><br>
+                        <dd>Hull Bossings Area<input id="hullBossings" type="number" value="0"></dd><br>
+                        <dd>Strut Bossings Area<input id="strutBossings" type="number" value="0"></dd><br>
+                        <dd>Shafts <input id="1+k2Shafts" type="number" step="0.1" value="2.0" min="2.0" max="4.0"> Area<input id="shafts" type="number" value="0"></dd><br>
+                        <dd>Stabilizer Fins Area<input id="stabilizerFins" type="number" value="0"></dd><br>
+                        <dd>Dome Area<input id="Dome" type="number" value="0"></dd><br>
+                        <dd>Bilge Keel Area<input id="bilgeKeel" type="number" value="0"></dd><br>
+                    </div>
+                </dl>
+            </ul>
+        </div> 
+        <div class="table">
+            <table>
+                <thead>
+                <th>S.No</th>
+                <th>Types</th>
+                <th>Value</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Total Resistance</td>
+                        <td><div id="totalResistance"></div></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Frictional Resistance</td>
+                        <td><div id="frictionalResistance"></div></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Form Resistance</td>
+                        <td><div id="formResistance"></div></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Appandage Resistance</td>
+                        <td><div id="appandageResistance"></div></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Wave Resistance</td>
+                        <td><div id="waveResistance"></div></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Bulbous Bow Resistance</td>
+                        <td><div id="bowResistance"></div></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Transom Resistance</td>
+                        <td><div id="transomResistance"></div></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Correlation Resistance</td>
+                        <td><div id="correlationResistance"></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button onclick="calculate()" type="button">Calculate</button>
+    </body>
+</html>

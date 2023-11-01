@@ -1,0 +1,36 @@
+.Note{
+    background-color: yellow;
+    max-width: fit-content;
+}
+.inputdata{
+    border: 2px solid black;
+    width: 65%;
+}
+.principalparticulars,.coefficients{
+    width: 35%;
+    margin-bottom: 15px;
+}
+.Appandages{
+    margin-left:50%;
+    margin-top: -510px;
+    margin-bottom: 30px;
+    width: 45%;
+}
+.principalparticulars, .coefficients,.appandages{
+    border: 1px solid blue;
+}
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: fit-content;
+    text-align: center;
+}
+table{
+    width: 30%;
+    margin-right: 3%;
+    margin-top: -500px;
+    float: right;
+}
+th,td{
+    height: 30px;
+}
